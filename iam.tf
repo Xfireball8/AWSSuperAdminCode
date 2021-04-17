@@ -20,6 +20,24 @@
   # TODO : Create the IAM Role for reading into ostree/worker
     # TODO : Create the IAM Instance Profile for reading into ostree/worker
 
+############################ S3 Bucket Instances Assets Policies ######################
+
+# TODO : Create the IAM Policy to manipulate the S3/SaaSProj/instances bucket dir
+  # TODO : Assign the policy to Administrator_SaaS
+
+# TODO : Create the IAM Policy to read the S3/SaaSProj/instances/master bucket dir
+  # TODO : Create the IAM Role
+    # TODO : Create the IAM instance profile
+
+# TODO : Create the IAM Policy to read the S3/SaaSProj/instances/worker1 bucket dir
+  # TODO : Create the IAM Role
+    # TODO : Create the IAM instance profile
+
+
+# TODO : Create the IAM Policy to read the S3/SaaSProj/instances/worker2 bucket dir
+  # TODO : Create the IAM Role
+    # TODO : Create the IAM instance profile
+
 ############################ SaaS Administrator Rights ################################
 
 # TODO : Code the IAM policy for i3 Metal Instance (PowerOn / PowerOff instance)
