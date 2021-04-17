@@ -1,3 +1,6 @@
+TODO : Transform Resource based AC into Tag Based AC
+
+
 ########################### IAM Users & Groups #######################################
 
 # TODO : Create the group Administrator_SaaS 
@@ -12,7 +15,7 @@
 
 ############################ S3 Bucket Dir. Ostree Policies ############################
 
-# TODO : Create the IAM Policy for the master instance to read into S3/SaasProj/ostree/master
+# TODO : Create the IAM Policy for the tag into S3/SaasProj/ostree/master
   # TODO : Create the IAM Role for reading into ostree/master
     # TODO : Create the IAM Instance Profile for reading into ostree/master
 
