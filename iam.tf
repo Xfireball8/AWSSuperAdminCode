@@ -1,5 +1,4 @@
-TODO : Transform Resource based AC into Tag Based AC
-
+TODO : Transform Resource based AC into Attribute Based AC
 
 ########################### IAM Users & Groups #######################################
 
@@ -15,31 +14,20 @@ TODO : Transform Resource based AC into Tag Based AC
 
 ############################ S3 Bucket Dir. Ostree Policies ############################
 
-# TODO : Create the IAM Policy for the tag into S3/SaasProj/ostree/master
-  # TODO : Create the IAM Role for reading into ostree/master
-    # TODO : Create the IAM Instance Profile for reading into ostree/master
+# TODO : Create the IAM Policy for the master to read into S3 Folder with { Project : "SaaS" ; Type : "Ostree" ; k8sRole : "master" } (S3/SaasProj/ostree/master)
+  # TODO : Create the IAM Role for reading into these folders
+    # TODO : Create the IAM Instance Profile for reading these
 
-# TODO : Create the IAM Policy for the worker instances to read into S3/SaaSProj/ostree/worker
-  # TODO : Create the IAM Role for reading into ostree/worker
-    # TODO : Create the IAM Instance Profile for reading into ostree/worker
+# TODO : Create the IAM Policy for the worker instances to read into S3 Folder with tags { Project : "SaaS" ; Type : "Ostree" : k8sRole : "master" } (S3/SaaSProj/ostree/worker)
+  # TODO : Create the IAM Role for reading into these
+    # TODO : Create the IAM Instance Profile for reading into these
 
 ############################ S3 Bucket Instances Assets Policies ######################
 
-# TODO : Create the IAM Policy to manipulate the S3/SaaSProj/instances bucket dir
+# TODO : Create the IAM Policy to manipulate the S3 Folders with { Project : "SaaS" ; Type : "instance-assets" } S3/SaaSProj/instances bucket dir
   # TODO : Assign the policy to Administrator_SaaS
 
-# TODO : Create the IAM Policy to read the S3/SaaSProj/instances/master bucket dir
-  # TODO : Create the IAM Role
-    # TODO : Create the IAM instance profile
-
-# TODO : Create the IAM Policy to read the S3/SaaSProj/instances/worker1 bucket dir
-  # TODO : Create the IAM Role
-    # TODO : Create the IAM instance profile
-
-
-# TODO : Create the IAM Policy to read the S3/SaaSProj/instances/worker2 bucket dir
-  # TODO : Create the IAM Role
-    # TODO : Create the IAM instance profile
+# TODO : Create the IAM Policy to create IAM Policies for S3 Folders with { Project : "SaaS" ; Type : "instance-assets" & isPresentKey => instanceName }
 
 ############################ SaaS Administrator Rights ################################
 
