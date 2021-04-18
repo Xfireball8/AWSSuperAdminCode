@@ -1,7 +1,31 @@
-# TODO : Create S3/SaaSProj Bucket
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+  
+  bucket = "SaaSProj"
+  acl = "private"
 
-# TODO : Create S3/SaaSProj/Ostree Dir
+  versioning {
+    enabled = true
+  }
+}
 
-# TODO : Create S3/SaaSProj/Ostree/master Dir
+resource "aws_s3_bucket_object" "ostree_folder" {
+  bucket = module.s3_bucket.bucket_id
+  acl = "private"
+  key = "ostree/"
+  content_type = "application/x-directory"
+}
 
-# TODO : Create S3/SaaSProj/Ostree/worker Dir
+resource "aws_s3_bucket_object" "ostree_master_folder" {
+  bucket = module.s3_bucket.bucket_id
+  acl = "private"
+  key = "ostree/master/"
+  content_type = "application/x-directory"
+}
+
+resource "aws_s3_bucket_object" "ostree_worker_folder" {
+  bucket = module.s3_bucket.bucket_id
+  acl = "private"
+  key = "ostree/worker/"
+  content_type = "application/x-directory"
+}

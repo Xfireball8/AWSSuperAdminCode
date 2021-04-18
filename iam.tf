@@ -8,7 +8,60 @@ TODO : Transform Resource based AC into Attribute Based AC
 
 ############################ i3 Metal Workstation Rights #############################
 
-# TODO : Create the IAM Policy for i3 Metal Instance to use the S3/SaaSproj/ostree/*
+resource "aws_iam_policy" "allow-ostree-master-dir" {
+  name = "Allow-Ostree-Master-Dir-RW"
+  path = "/"
+  description = "A policy to allow Read and Write operation into the Ostree master in the SaaSProj Bucket"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+        {
+          "Effect": "Allow",
+          "Action": [
+            "s3:PutObject",
+            "s3:GetObject",
+            "s3:ListBucket",
+            "s3:DeleteObject",
+            "s3:GetBucketLocation"
+          ],
+          "Resource": [
+            "arn:aws:s3:::SaaSProj/ostree/master"
+            "arn:aws:s3:::SaaSProj/ostree/master/*"
+          ]
+        }
+    ]
+  })
+
+}
+
+resource "aws_iam_policy" "allow-ostree-worker-dir" {
+  name = "Allow-Ostree-Worker-Dir-RW"
+  path = "/"
+  description = "A policy to allow Read and Write operation into the Ostree worker in the SaaSProj Bucket"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+        {
+          "Effect": "Allow",
+          "Action": [
+            "s3:PutObject",
+            "s3:GetObject",
+            "s3:ListBucket",
+            "s3:DeleteObject",
+            "s3:GetBucketLocation"
+          ],
+          "Resource": [
+            "arn:aws:s3:::SaaSProj/ostree/worker"
+            "arn:aws:s3:::SaaSProj/ostree/worker/*"
+          ]
+        }
+    ]
+  })
+}
+
+
   # TODO : Create the IAM Role for manipulating S3/SaaSproj/ostree
     # TODO : Create the IAM Instance Profile for manipulating S3/SaaSProj/ostree
 
