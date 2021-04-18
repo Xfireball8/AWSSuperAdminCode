@@ -1,9 +1,7 @@
-TODO : Transform Resource based AC into Attribute Based AC
-
 ########################### IAM Users & Groups #######################################
 
 resource "aws_iam_group" "administrator-saas" {
-  name = "Administrator_SaaS"
+  name = "administrator_saas"
   path = "/users/"
 }
 
@@ -14,9 +12,9 @@ resource "aws_iam_user" "sfaisal-saas" {
 
 resource "aws_iam_group_membership" "administrator-saas-membership" {
   name = "administrator-saas-membership"
-  group = aws_iam_group.administrator-saas
+  group = aws_iam_group.administrator-saas.name
   users = [
-    aws_iam_user.sfaisal-saas
+    aws_iam_user.sfaisal-saas.name
   ]
 }
 
@@ -40,7 +38,7 @@ resource "aws_iam_policy" "allow-ostree-master-dir" {
             "s3:GetBucketLocation"
           ],
           "Resource": [
-            "arn:aws:s3:::SaaSProj/ostree/master"
+            "arn:aws:s3:::SaaSProj/ostree/master",
             "arn:aws:s3:::SaaSProj/ostree/master/*"
           ]
         }
@@ -67,7 +65,7 @@ resource "aws_iam_policy" "allow-ostree-worker-dir" {
             "s3:GetBucketLocation"
           ],
           "Resource": [
-            "arn:aws:s3:::SaaSProj/ostree/worker"
+            "arn:aws:s3:::SaaSProj/ostree/worker",
             "arn:aws:s3:::SaaSProj/ostree/worker/*"
           ]
         }
