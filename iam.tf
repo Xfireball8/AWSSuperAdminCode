@@ -2,9 +2,23 @@ TODO : Transform Resource based AC into Attribute Based AC
 
 ########################### IAM Users & Groups #######################################
 
-# TODO : Create the group Administrator_SaaS 
-  # TODO : Create the User sfaisal_SaaS
-    # TODO : Add sfaisal_Saas to Administrator_SaaS
+resource "aws_iam_group" "administrator-saas" {
+  name = "Administrator_SaaS"
+  path = "/users/"
+}
+
+resource "aws_iam_user" "sfaisal-saas" {
+  name = "sfaisal_saas"
+  path = "/users/"
+}
+
+resource "aws_iam_group_membership" "administrator-saas-membership" {
+  name = "administrator-saas-membership"
+  group = aws_iam_group.administrator-saas
+  users = [
+    aws_iam_user.sfaisal-saas
+  ]
+}
 
 ############################ i3 Metal Workstation Rights #############################
 
