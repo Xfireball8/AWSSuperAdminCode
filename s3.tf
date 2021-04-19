@@ -27,3 +27,10 @@ resource "aws_s3_bucket_object" "ostree_worker_folder" {
   key = "ostree/worker/"
   content_type = "application/x-directory"
 }
+
+resource "aws_s3_bucket_object" "instances_folder" {
+  bucket = aws_s3_bucket.saasproj.id
+  acl = "private"
+  key = "instances/"
+  content_type = "application/x-directory"
+}

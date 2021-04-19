@@ -1,0 +1,18 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowReadingIntoS3BucketSaasprojForOstreesAndIgnitionAssetsi",
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::saasproj/ostree/worker/",
+        "arn:aws:s3:::saasproj/ostree/worker/*",
+        "arn:aws:s3:::saasproj/ostree/master/",
+        "arn:aws:s3:::saasproj/ostree/master/*",
+        "arn:aws:s3:::saasproj/instances/",
+        "arn:aws:s3:::saasproj/instances/*"
+      ]
+    }
+}
