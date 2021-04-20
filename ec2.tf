@@ -1,5 +1,3 @@
-############################## VPC Stuff #########################################
-
 resource "aws_vpc" "workstation_vpc" {
   cidr_block = "192.168.0.0/28"
   enable_dns_support = "true"
@@ -50,10 +48,6 @@ resource "aws_internet_gateway" "workstation_igw" {
   vpc_id = aws_vpc.workstation_vpc.id
 }
 
-############################# Instance Stuff #####################################
-
-# TODO : Create i3 Metal instance
-
 resource "aws_instance" "i3metal_workstation" {
   ami = "ami-0d6aecf0f0425f42a"
   instance_type = "i3.metal"
@@ -67,6 +61,10 @@ resource "aws_instance" "i3metal_workstation" {
     delete_on_termination = "true"
     volume_size = 40
     volume_type = "gp2"
+  }
+  
+  tags = {
+    machinery = "workstations"
   }
 }
 
