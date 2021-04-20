@@ -33,7 +33,7 @@ resource "aws_iam_policy" "allow-ostree-worker-dir-fullcontrol" {
 }
 
 resource "aws_iam_group_policy" "allow-poweron-shutdown-i3metal" {
-  name = "Allow-Poweron-Shutdown-i3metal",
+  name = "Allow-Poweron-Shutdown-i3metal"
   group = aws_iam_group.administrator-saas.name
   path = "/"
   description = "A policy to allow PowerOn/Reboot/Shutdown on i3 Workstations"
