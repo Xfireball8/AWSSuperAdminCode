@@ -4,6 +4,7 @@
     { 
       "Sid": "EC2CreationTasks",
       "Effect": "Allow",
+      "Resource":["*"],
       "Action": [
         "ec2:AssignPrivateIpAddresses",
         "ec2:AssociateRouteTable",
@@ -87,11 +88,12 @@
         "ec2:UpdateSecurityGroupRuleDescriptionsEgress",
         "ec2:UpdateSecurityGroupRuleDescriptionsIngress"
       ],
-      "Condition": [
+      "Resource": ["*"],
+      "Condition": {
         "StringEquals":{
           "aws:RequestTag/project" : "saas"
         }
-      ]
+      }
     },
     {
       "Sid": "S3AllowedTasks",
@@ -109,6 +111,7 @@
     {
       "Sid": "IAMAllowedTasks",
       "Effect": "Allow",
+      "Resource":["*"],
       "Action": [
         "iam:CreatePolicy",
         "iam:CreateRole",
@@ -141,5 +144,4 @@
       }
     }
   ]
-
 }

@@ -3,6 +3,7 @@
   "Statement": [
     {
       "Sid": "AllowReadingIntoS3BucketSaasprojForOstreesAndIgnitionAssets",
+      "Effect": "Allow",
       "Action": [
         "s3:GetObject"
       ],
@@ -15,4 +16,5 @@
         "arn:aws:s3:::saasproj/instances/*"
       ]
     }
+  ]
 }
