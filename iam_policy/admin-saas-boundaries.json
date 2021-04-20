@@ -1,12 +1,11 @@
 {
   "Version": "2012-10-17",
   "Statement": [
-    {
-      "Sid": "EC2AllowedTasks",
+    { 
+      "Sid": "EC2CreationTasks",
       "Effect": "Allow",
       "Action": [
         "ec2:AssignPrivateIpAddresses",
-        "ec2:AssociateIamInstanceProfile",
         "ec2:AssociateRouteTable",
         "ec2:AssociateSubnetCidrBlock",
         "ec2:AssociateVpcCidrBlock",
@@ -23,6 +22,14 @@
         "ec2:CreateSecurityGroup",
         "ec2:CreateSubnet",
         "ec2:CreateVpc",
+        "ec2:CreateTags"
+      ]
+    },
+    {
+      "Sid": "EC2AllowedTasks",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:AssociateIamInstanceProfile",
         "ec2:DeleteInternetGateway",
         "ec2:DeleteLocalGatewayRoute",
         "ec2:DeleteLocalGatewayRouteTableVpcAssociation",
@@ -31,6 +38,7 @@
         "ec2:DeleteSecurityGroup",
         "ec2:DeleteSubnet",
         "ec2:DeleteVpc",
+        "ec2:DeleteTags",
         "ec2:DescribeInstanceStatus",
         "ec2:DescribeInstanceTypes",
         "ec2:DescribeInstances",
@@ -81,7 +89,7 @@
       ],
       "Condition": [
         "StringEquals":{
-          "ec2:Owner" : "sfaisal_saas"
+          "aws:RequestTag/project" : "saas"
         }
       ]
     },
