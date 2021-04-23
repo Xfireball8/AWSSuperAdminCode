@@ -5,6 +5,10 @@ resource "aws_s3_bucket" "saasproj" {
   versioning {
     enabled = true
   }
+
+  tags = {
+    ownership = "super-administrator"
+  }
 }
 
 resource "aws_s3_bucket_object" "ostree_folder" {
@@ -12,6 +16,10 @@ resource "aws_s3_bucket_object" "ostree_folder" {
   acl = "private"
   key = "ostree/"
   content_type = "application/x-directory"
+
+  tags = {
+    ownership = "super-administrator"
+  }
 }
 
 resource "aws_s3_bucket_object" "ostree_master_folder" {
@@ -19,6 +27,10 @@ resource "aws_s3_bucket_object" "ostree_master_folder" {
   acl = "private"
   key = "ostree/master/"
   content_type = "application/x-directory"
+  
+  tags = {
+    ownership = "super-administrator"
+  }
 }
 
 resource "aws_s3_bucket_object" "ostree_worker_folder" {
@@ -26,6 +38,10 @@ resource "aws_s3_bucket_object" "ostree_worker_folder" {
   acl = "private"
   key = "ostree/worker/"
   content_type = "application/x-directory"
+  
+  tags = {
+    ownership = "super-administrator"
+  }
 }
 
 resource "aws_s3_bucket_object" "instances_folder" {
@@ -33,4 +49,8 @@ resource "aws_s3_bucket_object" "instances_folder" {
   acl = "private"
   key = "instances/"
   content_type = "application/x-directory"
+
+  tags = {
+    ownership = "super-administrator"
+  }
 }

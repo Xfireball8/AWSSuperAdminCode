@@ -6,6 +6,21 @@ resource "aws_iam_group" "administrator-saas" {
 resource "aws_iam_user" "sfaisal-saas" {
   name = "sfaisal_saas"
   path = "/users/"
+
+  tags = {
+    ownership = "super-administrator"
+    project = "saas"
+  }
+}
+
+resource "aws_iam_user_login_profile" "sfaisal-saas_login_profile" {
+  user  = aws_iam_user.sfaisal-saas.name
+  pgp_key = "keybase:orangemushroom1"
+}
+
+resource "aws_iam_access_key" "sfaisal-saas_access_key" {
+  user = aws_iam_user.sfaisal-saas.name
+  pgp_key = "keybase:orangemushroom1"
 }
 
 resource "aws_iam_group_membership" "administrator-saas-membership" {
@@ -22,6 +37,10 @@ resource "aws_iam_policy" "allow-ostree-master-dir-fullcontrol" {
   description = "A policy to allow Read and Write operation into the Ostree master in the SaaSProj Bucket"
 
   policy = file("iam_policy/rw-ostree-master.json")
+
+  tags = {
+    ownership = "super-administrator"
+  }
 }
 
 resource "aws_iam_policy" "allow-ostree-worker-dir-fullcontrol" {
@@ -30,6 +49,10 @@ resource "aws_iam_policy" "allow-ostree-worker-dir-fullcontrol" {
   description = "A policy to allow Read and Write operation into the Ostree worker in the SaaSProj Bucket"
 
   policy = file("iam_policy/rw-ostree-worker.json")
+
+  tags = {
+    ownership = "super-administrator"
+  }
 }
 
 resource "aws_iam_group_policy" "allow-poweron-shutdown-i3metal" {
@@ -37,7 +60,9 @@ resource "aws_iam_group_policy" "allow-poweron-shutdown-i3metal" {
   group = aws_iam_group.administrator-saas.name
 
   policy = file("iam_policy/poweron-shutdown-i3metal.json")
+  
 }
+
 
 
 resource "aws_iam_group_policy" "admin_saas_boundaries" {
@@ -51,4 +76,8 @@ resource "aws_iam_policy" "instance_saas_boundaries" {
   path = "/"
   description = "The boundaries for the instances created by adminstrator_saas group"
   policy = file("iam_policy/instance-saas-boundaries.json")
+
+  tags = {
+    ownership = "super-administrator"
+  }
 }

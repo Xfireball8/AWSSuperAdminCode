@@ -12,7 +12,7 @@
           "*"
         ],
         "Condition": {
-            "StringEquals":{"aws:RequestTag/machinery":"workstations"}
+            "StringEquals":{"aws:ResourceTag/machinery":"workstations"}
         }
      }
   ]
