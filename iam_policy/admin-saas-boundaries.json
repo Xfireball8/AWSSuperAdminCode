@@ -31,15 +31,50 @@
       }
     },
     {
+      "Sid": "S3AllowedTasks2",
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListAllMyBuckets",
+        "s3:GetBucketLocation"
+      ],
+      "Resource": ["arn:aws:s3:::*"]
+    },
+    {
+      "Sid": "S3AllowedTasks3",
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket"
+      ],
+      "Resource": ["arn:aws:s3:::saasproj"],
+      "Condition": {
+        "StringEquals": {
+          "s3:prefix": ["","instances"],
+          "s3:delimiter": ["/"]
+        }
+      }
+    },
+    {
+      "Sid": "S3AllowedTasks4",
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket"
+      ],
+      "Resource": ["arn:aws:s3:::saasproj"],
+      "Condition": {
+        "StringLike": {
+          "s3:prefix": "instances/*"
+        }
+      }
+    },
+    {
       "Sid": "S3AllowedTasks",
       "Effect": "Allow",
       "Action": [
-        "s3:PutObject",
-        "s3:GetObject",
-        "s3:DeleteObject"
+        "s3:PutObject*",
+        "s3:GetObject*",
+        "s3:DeleteObject*"
       ],
       "Resource": [
-        "arn:aws:s3:::saasproj/instances/",
         "arn:aws:s3:::saasproj/instances/*", 
         "arn:aws:s3:::projectsaas/saas_admin/*"
       ]
@@ -53,39 +88,32 @@
       ]
     },
     {
-      "Sid": "IAMAllowedTasks",
+      "Sid": "PolicyManagement",
       "Effect": "Allow",
-      "Resource":["*"],
+      "Resource": ["*"],
       "Action": [
-        "iam:CreatePolicy",
+        "iam:ChangePassword",
+        "iam:ListPolicies",
+        "iam:ListRolePolicies",
+        "iam:ListAttachedRolePolicies",
+        "iam:ListInstanceProfilesForRole",
         "iam:CreateRole",
-        "iam:AddRoleToInstanceProfile",
-        "iam:RemoveRoleFromInstanceProfile",
-        "iam:AttachRolePolicy",
-        "iam:CreateInstanceProfile",
-        "iam:DeleteInstanceProfile",
-        "iam:DeletePolicy",
-        "iam:DeleteRole",
-        "iam:DetachRolePolicy",
-        "iam:GetInstanceProfile",
-        "iam:GetPolicy",
-        "iam:GetRole",
-        "iam:TagInstanceProfile",
-        "iam:TagPolicy",
         "iam:TagRole",
-        "iam:UntagInstanceProfile",
-        "iam:UntagPolicy",
         "iam:UntagRole",
         "iam:UpdateRole",
         "iam:UpdateRoleDescription",
+        "iam:GetRole*",
+        "iam:DeleteRole",
+        "iam:DeleteInstanceProfile",
+        "iam:CreateInstanceProfile",
+        "iam:TagInstanceProfile",
+        "iam:UntagInstanceProfile",
         "iam:UpdateAssumeRolePolicy",
-        "iam:PassRole"
-      ],
-      "Condition":{
-        "StringEquals": {
-          "iam:PermissionsBoundary": "arn:aws:iam:357100702785:policy/instance-saas-boundaries"
-        }
-      }
+        "iam:GetInstanceProfile",
+        "iam:RemoveRoleFromInstanceProfile",
+        "iam:AddRoleToInstanceProfile",
+        "iam:*Policy*"
+      ]
     }
   ]
 }
