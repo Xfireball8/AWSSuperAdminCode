@@ -31,40 +31,6 @@ resource "aws_iam_group_membership" "administrator-saas-membership" {
   ]
 }
 
-resource "aws_iam_policy" "allow-ostree-master-dir-fullcontrol" {
-  name = "Allow-Ostree-Master-Dir-FullControl"
-  path = "/"
-  description = "A policy to allow Read and Write operation into the Ostree master in the SaaSProj Bucket"
-
-  policy = file("iam_policy/rw-ostree-master.json")
-
-  tags = {
-    ownership = "super-administrator"
-  }
-}
-
-resource "aws_iam_policy" "allow-ostree-worker-dir-fullcontrol" {
-  name = "Allow-Ostree-Worker-Dir-FullControl"
-  path = "/"
-  description = "A policy to allow Read and Write operation into the Ostree worker in the SaaSProj Bucket"
-
-  policy = file("iam_policy/rw-ostree-worker.json")
-
-  tags = {
-    ownership = "super-administrator"
-  }
-}
-
-resource "aws_iam_group_policy" "allow-poweron-shutdown-i3metal" {
-  name = "Allow-Poweron-Shutdown-i3metal"
-  group = aws_iam_group.administrator-saas.name
-
-  policy = file("iam_policy/poweron-shutdown-i3metal.json")
-  
-}
-
-
-
 resource "aws_iam_group_policy" "admin_saas_boundaries" {
   name = "Admin-SaaS-Boundaries"
   group = aws_iam_group.administrator-saas.name

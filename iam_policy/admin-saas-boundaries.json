@@ -34,50 +34,9 @@
       "Sid": "S3AllowedTasks2",
       "Effect": "Allow",
       "Action": [
-        "s3:ListAllMyBuckets",
-        "s3:GetBucketLocation"
+        "s3:*"
       ],
       "Resource": ["arn:aws:s3:::*"]
-    },
-    {
-      "Sid": "S3AllowedTasks3",
-      "Effect": "Allow",
-      "Action": [
-        "s3:ListBucket"
-      ],
-      "Resource": ["arn:aws:s3:::saasproj"],
-      "Condition": {
-        "StringEquals": {
-          "s3:prefix": ["","instances"],
-          "s3:delimiter": ["/"]
-        }
-      }
-    },
-    {
-      "Sid": "S3AllowedTasks4",
-      "Effect": "Allow",
-      "Action": [
-        "s3:ListBucket"
-      ],
-      "Resource": ["arn:aws:s3:::saasproj"],
-      "Condition": {
-        "StringLike": {
-          "s3:prefix": "instances/*"
-        }
-      }
-    },
-    {
-      "Sid": "S3AllowedTasks",
-      "Effect": "Allow",
-      "Action": [
-        "s3:PutObject*",
-        "s3:GetObject*",
-        "s3:DeleteObject*"
-      ],
-      "Resource": [
-        "arn:aws:s3:::saasproj/instances/*", 
-        "arn:aws:s3:::projectsaas/saas_admin/*"
-      ]
     },
     {
       "Sid": "ChangePassword",
