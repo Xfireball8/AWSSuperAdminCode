@@ -3,11 +3,11 @@ Work In Progress !!!
 == What is this ? ==
 
 This is a big project about the PoC of an infrastructure related to cloud-native applications. 
-It is a prelude of other projects and has been made to demonstrate what i can achieve to learn 
+It is a prelude of other projects, it has been made to demonstrate what i can achieve to learn 
 by myself and to illustrate my skills in my resume. 
-It's a prelude and prototype of others cool project that have yet to come :) !
+It's a prelude and prototype of other cool projects that have yet to come :) !
 
-It is temporary public because i'm searching an internship/job and i'm candidating to MsCs for 
+It is temporary public because i'm searching for an internship/job and i'm candidating to MsCs for 
 the next year.
 
 --------------------------------------------------------------------------------------------------
@@ -19,11 +19,11 @@ Our fictional enterpise has created a team to build SaaS applications.
 The idea here is that the Super Admin will allow some necessary resource for our SaaS creators team and delegate
 the development of the infrastructure to the DevOps member of the Team. 
 
-To do so it will create some buckets, one that is for terraform state files and some others related to OS Creation process (For example : kubeconfigs file of instances) ; and will manage RBAC with amazon AWS.
+To do so it will create some buckets, one that is for terraform state files and some others related to OS Creation process (For example : kubeconfigs file of instances) ; and will manage RBAC with amazon IAM.
 
 The DevOps is responsible for :
-- Creating the cloud infrastructure for the cluster (Repo of this code here : x)
-- Creating an custom OS based on Fedora Core Os for the cluster (Repo of the code here: x)
+- Creating the cloud infrastructure for the cluster (Repo of this code here : https://github.com/Xfireball8/SaasProjectCluster)
+- Creating an custom OS based on Fedora Core Os for the cluster (Repo of the code here: https://github.com/Xfireball8/KubernetesOS-Config)
 
 --------------------------------------------------------------------------------------------------
 
